@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạp Hóa 1 Mình Tui</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fff5f7;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff0f3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ffb7c5;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-[#fff5f7] text-gray-700 pb-24 select-none">
+
+    <!-- Header / Banner Section -->
+    <div class="max-w-md mx-auto bg-white shadow-sm min-h-screen relative flex flex-col">
+        
+        <!-- Top Nav Bar Info -->
+        <div class="px-4 pt-4 pb-2 flex items-center justify-between border-b border-pink-50">
+            <div class="flex items-center space-x-3">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-pink-200">
+                    <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-white rounded-full"></span>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-1.5">
+                        <h1 class="font-bold text-gray-800 text-base">Tạp Hóa 1 Mình Tui</h1>
+                        <span class="bg-emerald-100 text-emerald-600 text-[10px] font-bold px-2 py-0.5 rounded-full">OPEN</span>
+                    </div>
+                    <p class="text-xs text-gray-400">Shop nhỏ về des và freebies của mình✨</p>
+                </div>
+            </div>
+            <button onclick="toggleCartModal()" class="relative bg-pink-50 hover:bg-pink-100 p-2.5 rounded-full transition text-pink-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span id="cart-badge" class="absolute -top-1 -right-1 bg-pink-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+            </button>
+        </div>
+
+        <!-- Banner Image -->
+        <div class="px-4 py-3">
+            <div class="w-full h-44 rounded-2xl overflow-hidden shadow-inner bg-pink-100 relative">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600" alt="Banner" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Social Channels -->
+        <div class="px-4 mb-3">
+            <p class="text-xs font-bold text-pink-400 mb-2 flex items-center gap-1">
+                <span>Welcome to Tạp Hóa 1 Mình Tui</span> 💖
+            </p>
+            <div class="grid grid-cols-2 gap-2.5">
+                <a href="#" class="flex items-center justify-center space-x-2 bg-pink-100/70 hover:bg-pink-100 text-pink-700 py-2.5 px-3 rounded-xl text-xs font-semibold transition">
+                    <span class="w-2 h-2 rounded-full bg-pink-400"></span><span>Instagram</span>
+                </a>
+                <a href="#" class="flex items-center justify-center space-x-2 bg-blue-50 hover:bg-blue-100 text-blue-600 py-2.5 px-3 rounded-xl text-xs font-semibold transition">
+                    <span class="w-2 h-2 rounded-full bg-blue-400"></span><span>Facebook</span>
+                </a>
+                <a href="#" class="flex items-center justify-center space-x-2 bg-pink-100/70 hover:bg-pink-100 text-pink-700 py-2.5 px-3 rounded-xl text-xs font-semibold transition">
+                    <span class="w-2 h-2 rounded-full bg-pink-400"></span><span>Tiktok</span>
+                </a>
+                <a href="#" class="flex items-center justify-center space-x-2 bg-pink-100/70 hover:bg-pink-100 text-pink-700 py-2.5 px-3 rounded-xl text-xs font-semibold transition">
+                    <span class="w-2 h-2 rounded-full bg-pink-400"></span><span>Zalo</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="px-4 mb-3">
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </span>
+                <input type="text" id="search-input" oninput="handleSearch()" placeholder="Tìm tên idol, tên sản phẩm..." class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-100 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-pink-300 focus:bg-white transition">
+            </div>
+        </div>
+
+        <!-- Filter Tier 1: Nhóm nhạc (Tone hồng) -->
+        <div class="px-4 mb-2">
+            <p class="text-[10px] font-bold text-gray-400 mb-1">CHỌN NHÓM NHẠC:</p>
+            <div id="group-filters" class="flex space-x-2 overflow-x-auto pb-1 no-scrollbar">
+                <button onclick="filterByGroup('all')" id="group-all" class="group-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-pink-500 text-white shadow-sm transition">Tất cả nhóm</button>
+                <button onclick="filterByGroup('cortis')" id="group-cortis" class="group-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-pink-50 text-pink-500 hover:bg-pink-100 transition">Cortis</button>
+                <button onclick="filterByGroup('aespa')" id="group-aespa" class="group-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-pink-50 text-pink-500 hover:bg-pink-100 transition">aespa</button>
+                <button onclick="filterByGroup('ive')" id="group-ive" class="group-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-pink-50 text-pink-500 hover:bg-pink-100 transition">IVE</button>
+            </div>
+        </div>
+
+        <!-- Filter Tier 2: Loại sản phẩm (Tone xanh trời) -->
+        <div class="px-4 mb-4">
+            <p class="text-[10px] font-bold text-gray-400 mb-1">LOẠI SẢN PHẨM:</p>
+            <div id="type-filters" class="flex space-x-2 overflow-x-auto pb-1 no-scrollbar">
+                <button onclick="filterByType('all')" id="type-all" class="type-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-sky-500 text-white shadow-sm transition">Tất cả loại</button>
+                <button onclick="filterByType('sticker')" id="type-sticker" class="type-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-600 hover:bg-sky-100 transition">Sticker</button>
+                <button onclick="filterByType('card')" id="type-card" class="type-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-600 hover:bg-sky-100 transition">Card Des</button>
+                <button onclick="filterByType('poster')" id="type-poster" class="type-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-600 hover:bg-sky-100 transition">Poster</button>
+            </div>
+        </div>
+
+        <!-- Product List Section -->
+        <div class="px-4 flex-1 mb-4">
+            <div id="product-grid" class="grid grid-cols-2 gap-3">
+                <!-- Products injected by JS -->
+            </div>
+        </div>
+
+        <!-- Pagination Bar -->
+        <div id="pagination-container" class="px-4 mb-8 flex justify-center items-center space-x-1.5 flex-wrap">
+            <!-- Phân trang tự động sinh ra ở đây -->
+        </div>
+
+        <!-- Bottom Navigation Bar -->
+        <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/90 backdrop-blur-md border-t border-pink-100 py-2.5 px-6 flex justify-between items-center z-40">
+            <button class="flex flex-col items-center text-pink-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span class="text-[10px] mt-0.5 font-bold">Trang chủ</span>
+            </button>
+            <button onclick="toggleCartModal()" class="flex flex-col items-center text-gray-400 hover:text-pink-500 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                <span class="text-[10px] mt-0.5">Giỏ hàng</span>
+            </button>
+        </div>
+
+        <!-- Product Detail Modal (Xem phóng to ảnh & Nhiều ảnh sản phẩm) -->
+        <div id="product-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4 max-w-md mx-auto">
+            <div class="bg-white rounded-3xl p-5 w-full shadow-2xl relative max-h-[90vh] flex flex-col">
+                <button onclick="closeProductModal()" class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+                
+                <!-- Main Big Image -->
+                <div class="w-full h-64 rounded-2xl overflow-hidden bg-pink-50 mb-3 border border-pink-100">
+                    <img id="modal-main-img" src="" alt="Detail" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Gallery Thumbnails (Nhiều ảnh nhỏ để chuyển đổi) -->
+                <div id="modal-thumbnails" class="flex space-x-2 overflow-x-auto pb-2 mb-3">
+                    <!-- Ảnh nhỏ inject bằng JS -->
+                </div>
+
+                <div class="flex-1 overflow-y-auto pr-1">
+                    <span id="modal-tag" class="inline-block bg-sky-50 text-sky-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase mb-1"></span>
+                    <h3 id="modal-title" class="font-bold text-gray-800 text-base mb-1"></h3>
+                    <p id="modal-desc" class="text-xs text-gray-500 mb-3"></p>
+                    <p id="modal-price" class="font-bold text-pink-500 text-lg mb-4"></p>
+                </div>
+
+                <button id="modal-add-btn" class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2.5 rounded-xl text-xs font-bold shadow-md shadow-pink-200 transition">
+                    + Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+        <!-- Cart Modal Drawer -->
+        <div id="cart-modal" class="fixed inset-0 bg-black/40 z-50 hidden flex justify-end flex-col max-w-md mx-auto">
+            <div class="bg-white rounded-t-3xl p-5 max-h-[85vh] flex flex-col shadow-2xl">
+                <div class="flex justify-between items-center mb-3 border-b border-gray-100 pb-2">
+                    <h3 class="font-bold text-gray-800 text-sm flex items-center gap-1.5">🛒 Giỏ hàng của bạn</h3>
+                    <button onclick="toggleCartModal()" class="text-gray-400 hover:text-gray-600 text-lg font-bold px-2">&times;</button>
+                </div>
+                
+                <div class="mb-3 space-y-2 bg-pink-50/50 p-2.5 rounded-xl border border-pink-100">
+                    <p class="text-[11px] font-bold text-pink-500">Thông tin nhận hàng:</p>
+                    <input type="text" id="cust-name" placeholder="Họ và tên của bạn" class="w-full px-3 py-1.5 bg-white border border-pink-100 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-pink-300">
+                    <input type="text" id="cust-phone" placeholder="Số điện thoại / Zalo" class="w-full px-3 py-1.5 bg-white border border-pink-100 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-pink-300">
+                    <input type="text" id="cust-address" placeholder="Địa chỉ giao hàng chi tiết" class="w-full px-3 py-1.5 bg-white border border-pink-100 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-pink-300">
+                </div>
+
+                <div id="cart-items-container" class="overflow-y-auto flex-1 space-y-2 mb-3 pr-1 max-h-36">
+                    <!-- Cart items -->
+                </div>
+
+                <div class="border-t border-gray-100 pt-2">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs font-semibold text-gray-500">Tổng thanh toán:</span>
+                        <span id="cart-total" class="font-bold text-pink-500 text-base">0đ</span>
+                    </div>
+                    <button onclick="proceedToPayment()" class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2.5 rounded-xl text-xs font-bold shadow-md shadow-pink-200 transition">
+                        Tiến hành Thanh toán QR 💕
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment QR Modal -->
+        <div id="qr-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4 max-w-md mx-auto">
+            <div class="bg-white rounded-3xl p-5 w-full shadow-2xl text-center">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-bold text-gray-800 text-sm">Quét mã QR thanh toán</h3>
+                    <button onclick="closeQrModal()" class="text-gray-400 hover:text-gray-600 text-lg font-bold px-2">&times;</button>
+                </div>
+                <p id="order-code-display" class="text-xs font-bold text-pink-500 mb-2"></p>
+                
+                <div class="bg-pink-50 p-3 rounded-2xl inline-block mb-3 border border-pink-100">
+                    <img id="qr-image" src="" alt="QR Code" class="w-48 h-48 mx-auto rounded-lg object-contain bg-white">
+                </div>
+
+                <div class="bg-gray-50 p-2.5 rounded-xl text-left text-[11px] text-gray-600 space-y-1 mb-4 border border-gray-100">
+                    <p><b>🏦 Ngân hàng:</b> VIETCOMBANK</p>
+                    <p><b>👤 Chủ tài khoản:</b> NGUYEN THI THANH NHANH</p>
+                    <p><b>🔢 Số tài khoản:</b> 0741000647821</p>
+                    <p><b>💰 Số tiền:</b> <span id="qr-amount" class="text-pink-500 font-bold"></span></p>
+                    <p><b>📝 Nội dung CK:</b> <span id="qr-syntax" class="text-pink-500 font-bold"></span></p>
+                </div>
+
+                <p class="text-[10px] text-gray-400 mb-4">Vui lòng chuyển khoản đúng nội dung để hệ thống tự động xác nhận đơn ạ!</p>
+                
+                <button onclick="finishOrder()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-2.5 rounded-xl text-xs font-bold transition">
+                    Đã hoàn tất chuyển khoản ✨
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Danh sách sản phẩm mẫu (Mỗi sản phẩm có thể chứa mảng nhiều ảnh: images)
+        const products = [
+            { 
+                id: 1, 
+                name: "Sticker Set Cortis V1", 
+                desc: "Size 4x4, Cán bóng, set 30 tấm", 
+                price: 12000, 
+                group: "cortis", 
+                type: "sticker", 
+                images: [
+                    "https://images.unsplash.com/photo-1572375833955-4423b3260844?w=500",
+                    "https://images.unsplash.com/photo-1534723452862-2c87fca73d88?w=500",
+                    "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"
+                ]
+            },
+            { 
+                id: 2, 
+                name: "Card Des Hologram Cortis", 
+                desc: "Chất liệu cứng cáp, ép hologram lấp lánh bắt sáng cực đẹp.", 
+                price: 35000, 
+                group: "cortis", 
+                type: "card", 
+                images: [
+                    "https://images.unsplash.com/photo-1534723452862-2c87fca73d88?w=500",
+                    "https://images.unsplash.com/photo-1572375833955-4423b3260844?w=500"
+                ]
+            },
+            { 
+                id: 3, 
+                name: "Poster Khổ Lớn Cortis", 
+                desc: "Giấy C300 dày dặn, màu in sắc nét không phai.", 
+                price: 60000, 
+                group: "cortis", 
+                type: "poster", 
+                images: [
+                    "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500",
+                    "https://images.unsplash.com/photo-1544816155-12df9643f363?w=500"
+                ]
+            },
+            { 
+                id: 4, 
+                name: "Sticker aespa Supernova", 
+                desc: "Set độc quyền concept Supernova thời thượng.", 
+                price: 25000, 
+                group: "aespa", 
+                type: "sticker", 
+                images: [
+                    "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500",
+                    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500"
+                ]
+            },
+            { 
+                id: 5, 
+                name: "Card Des Karina / Winter", 
+                desc: "Card thiết kế kèm sleeve bảo vệ chắc chắn.", 
+                price: 40000, 
+                group: "aespa", 
+                type: "card", 
+                images: [
+                    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+                    "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500"
+                ]
+            },
+            { 
+                id: 6, 
+                name: "Poster aespa Drama Era", 
+                desc: "Kích thước chuẩn A3, giấy ảnh cao cấp.", 
+                price: 55000, 
+                group: "aespa", 
+                type: "poster", 
+                images: [
+                    "https://images.unsplash.com/photo-1544816155-12df9643f363?w=500",
+                    "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"
+                ]
+            },
+            { 
+                id: 7, 
+                name: "Sticker IVE Love Dive Set", 
+                desc: "Cắt bế sẵn tinh xảo, bóc dán cực tiện lợi.", 
+                price: 25000, 
+                group: "ive", 
+                type: "sticker", 
+                images: [
+                    "https://images.unsplash.com/photo-1572375833955-4423b3260844?w=500"
+                ]
+            },
+            { 
+                id: 8, 
+                name: "Card Des Wonyoung / Yujin", 
+                desc: "Card thiết kế độc quyền nhà shop siêu cưng.", 
+                price: 45000, 
+                group: "ive", 
+                type: "card", 
+                images: [
+                    "https://images.unsplash.com/photo-1534723452862-2c87fca73d88?w=500"
+                ]
+            },
+            { 
+                id: 9, 
+                name: "Poster IVE After Like", 
+                desc: "Màu sắc tươi sáng, sắc nét từng chi tiết nhỏ.", 
+                price: 50000, 
+                group: "ive", 
+                type: "poster", 
+                images: [
+                    "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"
+                ]
+            },
+            { 
+                id: 10, 
+                name: "Sticker Cortis V2 Extra", 
+                desc: "Bổ sung mẫu mới siêu xinh đợt 2.", 
+                price: 25000, 
+                group: "cortis", 
+                type: "sticker", 
+                images: [
+                    "https://images.unsplash.com/photo-1572375833955-4423b3260844?w=500"
+                ]
+            },
+            { 
+                id: 11, name: "Card Des aespa Special", desc: "Phiên bản giới hạn số lượng ít", price: 40000, group: "aespa", type: "card", images: ["https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500"] 
+            },
+            { 
+                id: 12, name: "Poster IVE I've Mine", desc: "Chất liệu giấy ảnh chống nước nhẹ", price: 55000, group: "ive", type: "poster", images: ["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"] 
+            },
+            { 
+                id: 13, name: "Sticker aespa Next Level", desc: "Set sticker phản quang cực chất", price: 25000, group: "aespa", type: "sticker", images: ["https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500"] 
+            },
+            { 
+                id: 14, name: "Card Des IVE Baddie", desc: "Bo góc tròn chuẩn size standard", price: 45000, group: "ive", type: "card", images: ["https://images.unsplash.com/photo-1534723452862-2c87fca73d88?w=500"] 
+            },
+            { 
+                id: 15, name: "Poster Cortis World Tour", desc: "Poster khổ lớn trang trí phòng", price: 65000, group: "cortis", type: "poster", images: ["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"] 
+            },
+            { 
+                id: 16, name: "Sticker Extra Thêm Trang 2", desc: "Mẫu độc quyền đợt 2", price: 30000, group: "cortis", type: "sticker", images: ["https://images.unsplash.com/photo-1572375833955-4423b3260844?w=500"] 
+            }
+        ];
+
+        let cart = [];
+        let selectedGroup = 'all';
+        let selectedType = 'all';
+        let currentPage = 1;
+        const itemsPerPage = 15;
+
+        function filterByGroup(group) {
+            selectedGroup = group;
+            currentPage = 1;
+            document.querySelectorAll('.group-btn').forEach(btn => {
+                btn.className = "group-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-pink-50 text-pink-500 hover:bg-pink-100 transition";
+            });
+            document.getElementById(`group-${group}`).className = "group-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-pink-500 text-white shadow-sm transition";
+            updateDisplay();
+        }
+
+        function filterByType(type) {
+            selectedType = type;
+            currentPage = 1;
+            document.querySelectorAll('.type-btn').forEach(btn => {
+                btn.className = "type-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-600 hover:bg-sky-100 transition";
+            });
+            document.getElementById(`type-${type}`).className = "type-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-sky-500 text-white shadow-sm transition";
+            updateDisplay();
+        }
+
+        function handleSearch() {
+            currentPage = 1;
+            updateDisplay();
+        }
+
+        function getFilteredProducts() {
+            const keyword = document.getElementById('search-input').value.toLowerCase();
+            return products.filter(p => {
+                const matchGroup = selectedGroup === 'all' || p.group === selectedGroup;
+                const matchType = selectedType === 'all' || p.type === selectedType;
+                const matchKeyword = p.name.toLowerCase().includes(keyword) || p.desc.toLowerCase().includes(keyword);
+                return matchGroup && matchType && matchKeyword;
+            });
+        }
+
+        function updateDisplay() {
+            const filtered = getFilteredProducts();
+            const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            const start = (currentPage - 1) * itemsPerPage;
+            const paginatedItems = filtered.slice(start, start + itemsPerPage);
+
+            renderProducts(paginatedItems, filtered.length);
+            renderPagination(totalPages);
+        }
+
+                function renderProducts(items, totalCount) {
+            const grid = document.getElementById('product-grid');
+            if (totalCount === 0) {
+                grid.innerHTML = `<div class="col-span-2 text-center py-10 text-gray-400 text-xs">Không tìm thấy sản phẩm phù hợp ✨</div>`;
+                return;
+            }
+            grid.innerHTML = items.map(p => `
+                <div class="bg-white border border-pink-50 rounded-2xl p-2.5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <!-- Thêm border border-pink-200 ở đây để có đường viền màu hồng -->
+                        <div onclick="openProductModal(${p.id})" class="w-full h-32 rounded-xl overflow-hidden bg-pink-50 mb-2 cursor-pointer relative group border border-pink-200">
+                            <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            ${p.images.length > 1 ? `<span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded-md font-bold">+${p.images.length} ảnh</span>` : ''}
+                        </div>
+                        <span class="inline-block bg-sky-50 text-sky-600 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase mb-1">${p.group} • ${p.type}</span>
+                        <h4 onclick="openProductModal(${p.id})" class="text-xs font-bold text-gray-800 line-clamp-1 mb-0.5 cursor-pointer hover:text-pink-500">${p.name}</h4>
+                        <p class="text-[10px] text-gray-400 line-clamp-1 mb-1.5">${p.desc}</p>
+                        <p class="text-xs font-bold text-pink-500 mb-2">${p.price.toLocaleString()}đ</p>
+                    </div>
+                    <button onclick="addToCart(${p.id})" class="w-full bg-pink-50 hover:bg-pink-500 hover:text-white text-pink-600 py-1.5 rounded-xl text-[11px] font-bold transition">
+                        + Thêm vào giỏ
+                    </button>
+                </div>
+            `).join('');
+        }
+
+
+        function renderPagination(totalPages) {
+            const container = document.getElementById('pagination-container');
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const isActive = i === currentPage;
+                const btnClass = isActive 
+                    ? "bg-pink-500 text-white font-bold shadow-sm" 
+                    : "bg-white border border-gray-200 text-gray-600 hover:bg-pink-50";
+                html += `<button onclick="changePage(${i})" class="w-8 h-8 rounded-xl text-xs flex items-center justify-center transition ${btnClass}">${i}</button>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            updateDisplay();
+            window.scrollTo({ top: 250, behavior: 'smooth' });
+        }
+
+        // --- XỬ LÝ POPUP XEM CHI TIẾT & PHÓNG TO ẢNH ---
+        function openProductModal(productId) {
+            const p = products.find(item => item.id === productId);
+            if (!p) return;
+
+            document.getElementById('modal-main-img').src = p.images[0];
+            document.getElementById('modal-tag').innerText = `${p.group} • ${p.type}`;
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-desc').innerText = p.desc;
+            document.getElementById('modal-price').innerText = p.price.toLocaleString() + 'đ';
+            document.getElementById('modal-add-btn').onclick = function() {
+                addToCart(p.id);
+                closeProductModal();
+            };
+
+            // Tạo danh sách ảnh nhỏ bên dưới ảnh lớn
+            const thumbContainer = document.getElementById('modal-thumbnails');
+            if (p.images.length > 1) {
+                thumbContainer.innerHTML = p.images.map((imgUrl, index) => `
+                    <div onclick="switchModalImage('${imgUrl}')" class="w-14 h-14 rounded-lg overflow-hidden border-2 ${index === 0 ? 'border-pink-500' : 'border-gray-200'} cursor-pointer flex-shrink-0 bg-pink-50">
+                        <img src="${imgUrl}" class="w-full h-full object-cover">
+                    </div>
+                `).join('');
+                thumbContainer.classList.remove('hidden');
+            } else {
+                thumbContainer.classList.add('hidden');
+            }
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function switchModalImage(url) {
+            document.getElementById('modal-main-img').src = url;
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            if (existing) { existing.quantity += 1; } 
+            else { cart.push({ ...product, quantity: 1, image: product.images[0] }); }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            if (totalItems > 0) {
+                badge.innerText = totalItems;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            const container = document.getElementById('cart-items-container');
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-center text-gray-400 text-xs py-4">Giỏ hàng trống trơn à 🥺</p>`;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between bg-white p-2 rounded-xl border border-gray-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="${item.image}" class="w-8 h-8 rounded-lg object-cover">
+                            <div>
+                                <h5 class="text-[11px] font-bold text-gray-800 line-clamp-1">${item.name}</h5>
+                                <p class="text-[10px] text-pink-500 font-semibold">${(item.price * item.quantity).toLocaleString()}đ</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-1.5">
+                            <button onclick="changeQty(${item.id}, -1)" class="w-5 h-5 bg-gray-100 rounded font-bold text-[10px]">-</button>
+                            <span class="text-[11px] font-bold">${item.quantity}</span>
+                            <button onclick="changeQty(${item.id}, 1)" class="w-5 h-5 bg-pink-100 text-pink-500 rounded font-bold text-[10px]">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cart-total').innerText = totalPrice.toLocaleString() + 'đ';
+        }
+
+        function changeQty(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) { cart = cart.filter(i => i.id !== productId); }
+            }
+            updateCartUI();
+        }
+
+        function toggleCartModal() {
+            document.getElementById('cart-modal').classList.toggle('hidden');
+        }
+
+        function closeQrModal() {
+            document.getElementById('qr-modal').classList.add('hidden');
+        }
+
+        function proceedToPayment() {
+            if (cart.length === 0) {
+                alert('Giỏ hàng đang trống!');
+                return;
+            }
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+
+            if (!name || !phone || !address) {
+                alert('Vui lòng điền đầy đủ thông tin nhận hàng ạ!');
+                return;
+            }
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const orderId = 'KPOP' + Math.floor(100000 + Math.random() * 900000);
+
+            const bankId = 'vcb'; 
+            const accountNo = '1234567890';
+            const template = 'compact2';
+            const qrUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-${template}.png?amount=${totalPrice}&addInfo=${orderId}`;
+
+            document.getElementById('qr-image').src = qrUrl;
+            document.getElementById('order-code-display').innerText = `Mã đơn hàng: #${orderId}`;
+            document.getElementById('qr-amount').innerText = totalPrice.toLocaleString() + 'đ';
+            document.getElementById('qr-syntax').innerText = orderId;
+
+            toggleCartModal();
+            document.getElementById('qr-modal').classList.remove('hidden');
+        }
+
+        function finishOrder() {
+            alert('Cảm ơn bạn đã ủng hộ shop! Đơn hàng đã được lưu lại 💕');
+            cart = [];
+            updateCartUI();
+            closeQrModal();
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>

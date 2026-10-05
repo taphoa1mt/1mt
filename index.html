@@ -190,15 +190,21 @@
                 <div id="cart-items-container" class="overflow-y-auto flex-1 space-y-2 mb-3 pr-1 max-h-36"></div>
 
                 <div class="border-t border-gray-100 pt-2">
-                    <div class="flex justify-between items-center text-xs text-gray-600 py-1">
-                        <span>Phí gói hàng (bắt buộc):</span>
-                        <span class="font-medium text-gray-800">3.000đ</span>
+                   <div class="border-t border-gray-100 pt-2">
+                        <div class="flex justify-between items-center text-xs text-gray-600 py-1">
+                            <span>Phí gói hàng (bắt buộc):</span>
+                            <span class="font-medium text-gray-800">3.000đ</span>
+                        </div>
+                        <!-- Dòng thêm mới thông tin phí ship Momo Ship -->
+                        <div class="flex justify-between items-center text-xs text-gray-500 py-1">
+                            <span>Phí vận chuyển (Momo Ship):</span>
+                            <span class="font-medium text-gray-700">Từ 14.000đ (Thanh toán với Shipper)</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-t border-gray-100 font-bold">
+                            <span>Tổng cộng:</span>
+                            <span id="cart-total" class="text-pink-500 text-base">0đ</span>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-center py-2 border-t border-gray-100 font-bold">
-                        <span>Tổng cộng:</span>
-                        <span id="cart-total" class="text-pink-500 text-base">0đ</span>
-                    </div>
-                </div>
 
                 <button onclick="proceedToPayment()" class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2.5 rounded-xl text-xs font-bold shadow-md transition">
                     Tiến hành Thanh toán QR 💖
@@ -698,37 +704,40 @@
             }
             updateCartUI();
         }
+       let currentOrderCode = ""; // Biến toàn cục để dùng chung cho cả lúc tạo QR lẫn lúc gửi Telegram
 
-        function proceedToPayment() {
-            if (cart.length === 0) {
-                alert('Giỏ hàng của bạn đang trống!');
-                return;
-            }
+function proceedToPayment() {
+    if (cart.length === 0) {
+        alert("Giỏ hàng của bạn đang trống!");
+        return;
+    }
 
-            const name = document.getElementById('cust-name').value.trim();
-            const phone = document.getElementById('cust-phone').value.trim();
-            const address = document.getElementById('cust-address').value.trim();
+    const name = document.getElementById('cust-name').value.trim();
+    const phone = document.getElementById('cust-phone').value.trim();
+    const address = document.getElementById('cust-address').value.trim();
 
-            if (!name || !phone || !address) {
-                alert('Vui lòng điền đầy đủ thông tin nhận hàng ạ!');
-                return;
-            }
+    if (!name || !phone || !address) {
+        alert("Vui lòng điền đầy đủ thông tin nhận hàng ạ!");
+        return;
+    }
 
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const total = subtotal + 3000;
-            const orderCode = 'TH' + Math.floor(1000 + Math.random() * 9000);
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const total = subtotal + 3000; // Cộng phí ship (nếu có)
+    
+    // Tạo mã đơn hàng và lưu vào biến toàn cục
+    currentOrderCode = "DH" + Math.floor(1000 + Math.random() * 9000);
 
-            document.getElementById('order-code-display').innerText = `Mã đơn hàng: ${orderCode}`;
-            document.getElementById('qr-amount').innerText = total.toLocaleString() + 'đ';
-            document.getElementById('qr-syntax').innerText = orderCode;
+    document.getElementById('order-code-display').innerText = `Mã đơn hàng: ${currentOrderCode}`;
+    document.getElementById('qr-amount').innerText = total.toLocaleString() + 'đ';
+    document.getElementById('qr-syntax').innerText = currentOrderCode;
 
-            // VietQR API link
-            const qrUrl = `https://img.vietqr.io/image/vcb-0741000647821-compact2.png?amount=${total}&addInfo=${orderCode}&accountName=NGUYEN%20THI%20THANH%20NHANH`;
-            document.getElementById('qr-image').src = qrUrl;
+    // VietQR API link
+    const qrUrl = `https://img.vietqr.io/image/vcb-074100047821-compact2.png?amount=${total}&addInfo=${currentOrderCode}&accountName=NGUYEN%20THI%20THANH%20NHAN`;
+    document.getElementById('qr-image').src = qrUrl;
 
-            toggleCartModal();
-            document.getElementById('qr-modal').classList.remove('hidden');
-        }
+    toggleCartModal();
+    document.getElementById('qr-modal').classList.remove('hidden');
+}
 
         function closeQrModal() {
             document.getElementById('qr-modal').classList.add('hidden');
@@ -750,6 +759,74 @@
         // Khởi chạy khi load trang
         updateDisplay();
         updateCartUI();
+function finishOrder() {
+    if (!cart || cart.length === 0) {
+        alert("Giỏ hàng của bạn đang trống!");
+        return;
+    }
+
+    const BOT_TOKEN = "8878129220:AAHl2mwEX3EYLdb1tEDZIxnydbeGvQDdEKs";
+    const CHAT_ID = "6034220911";
+    
+    // Sử dụng lại mã đơn hàng đã đồng bộ với nội dung CK
+    const orderCode = currentOrderCode || "DH" + Math.floor(1000 + Math.random() * 9000);
+
+    let orderDetails = [];
+
+    cart.forEach(cartItem => {
+        let product = products.find(p => p.id === cartItem.id);
+        if (product) {
+            let remainingStock = 0;
+            if (product.members && product.members.length > 0) {
+                let member = product.members.find(m => m.id === cartItem.memberId);
+                if (member) {
+                    member.stock -= cartItem.quantity;
+                    if (member.stock < 0) member.stock = 0;
+                    remainingStock = member.stock;
+                }
+            } else {
+                product.stock -= cartItem.quantity;
+                if (product.stock < 0) product.stock = 0;
+                remainingStock = product.stock;
+            }
+            orderDetails.push(`- ${cartItem.name} (${cartItem.memberName}): ${cartItem.quantity} cái - ${(cartItem.price * cartItem.quantity).toLocaleString()}đ (Kho còn: ${remainingStock})`);
+        }
+    });
+
+    let custName = document.getElementById('cust-name') ? document.getElementById('cust-name').value : 'Không có';
+    let custPhone = document.getElementById('cust-phone') ? document.getElementById('cust-phone').value : 'Không có';
+    let custAddress = document.getElementById('cust-address') ? document.getElementById('cust-address').value : 'Không có';
+
+    let orderSummary = orderDetails.join('\n');
+    let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toLocaleString();
+
+    let text = `🎉 CÓ ĐƠN HÀNG MỚI!\n\n`;
+    text += `📦 Mã đơn / Nội dung CK: #${orderCode}\n`;
+    text += `👤 Khách hàng: ${custName}\n`;
+    text += `📞 Số điện thoại: ${custPhone}\n`;
+    text += `🏠 Địa chỉ: ${custAddress}\n`;
+    text += `--------------------------------\n`;
+    text += `${orderSummary}\n`;
+    text += `--------------------------------\n`;
+    text += `💰 Tổng tiền: ${totalPrice}đ`;
+
+    // Gửi thông báo Telegram
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: text })
+    });
+
+    alert('Cảm ơn bạn đã đặt hàng! Shop sẽ xác nhận đơn sớm nhất ạ 💖');
+    
+    cart = [];
+    updateCartUI();
+    closeQrModal();
+    
+    if (typeof updateDisplay === 'function') {
+        updateDisplay();
+    }
+}
     </script>
 </body>
 </html>

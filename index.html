@@ -195,6 +195,13 @@
 </div>
                    <div class="border-t border-gray-100 pt-2">
                         <div class="flex justify-between items-center text-xs text-gray-600 py-1">
+                            <!-- Tùy chọn vỏ bọc uchiwa kèm móc khóa bi (Chỉ hiện khi có Uchiwa) -->
+<div id="keychain-option-container" class="hidden bg-pink-50/60 p-2 rounded-xl border border-pink-100 my-2 text-xs flex items-center justify-between">
+    <label class="flex items-center space-x-2 cursor-pointer">
+        <input type="checkbox" id="keychain-checkbox" onchange="updateCartUI()" class="rounded text-pink-500 focus:ring-pink-400">
+        <span class="font-medium text-gray-700">✨ Vỏ bọc uchiwa kèm móc khóa bi (+8.000đ)</span>
+    </label>
+</div>
                             <span>Phí gói hàng (bắt buộc):</span>
                             <span class="font-medium text-gray-800">3.000đ</span>
                         </div>
@@ -685,8 +692,28 @@
                 `;
             }).join('');
 
-            const finalTotal = subtotal > 0 ? subtotal + 3000 : 0;
-            totalEl.innerText = finalTotal.toLocaleString() + 'đ';
+          // Kiểm tra xem giỏ hàng có sản phẩm Uchiwa hay không
+    let hasUchiwa = cart.some(item => item.name && item.name.toLowerCase().includes('uchiwa'));
+    let keychainContainer = document.getElementById('keychain-option-container');
+
+    if (keychainContainer) {
+        if (hasUchiwa) {
+            keychainContainer.classList.remove('hidden'); // Hiển thị tùy chọn
+        } else {
+            keychainContainer.classList.add('hidden');    // Ẩn đi nếu không có Uchiwa
+            let cb = document.getElementById('keychain-checkbox');
+            if (cb) cb.checked = false;                   // Bỏ tick nếu ẩn
+        }
+    }
+
+    // Tính tiền vỏ bọc (nếu có tick chọn và hiển thị)
+    let keychainCheckbox = document.getElementById('keychain-checkbox');
+    let includeKeychain = (keychainContainer && !keychainContainer.classList.contains('hidden') && keychainCheckbox && keychainCheckbox.checked);
+    let keychainPrice = includeKeychain ? 8000 : 0;
+
+    // Tổng tiền hiển thị = Tiền hàng + Phí gói (3k) + Vỏ bọc (nếu có)
+    const finalTotal = subtotal > 0 ? (subtotal + 3000 + keychainPrice) : 0;
+    totalEl.innerText = finalTotal.toLocaleString() + 'đ';
         }
 
         function changeCartQty(index, delta) {
@@ -708,6 +735,7 @@
             updateCartUI();
         }
        let currentOrderCode = ""; // Biến toàn cục để dùng chung cho cả lúc tạo QR lẫn lúc gửi Telegram
+       let includeKeychain = false;
 
 function proceedToPayment() {
     if (cart.length === 0) {
@@ -731,11 +759,14 @@ function proceedToPayment() {
         alert("Đơn hàng tối thiểu phải từ 20.000đ (chưa tính phí gói hàng) mới được thanh toán bạn nhé! 💖");
         return;
     }
+    
 
-    const total = subtotal + 3000; // Cộng phí gói hàng 3k
-    // Tạo mã đơn hàng và lưu vào biến toàn cục
-    currentOrderCode = "DH" + Math.floor(1000 + Math.random() * 9000);
+    // Kiểm tra xem khách có tick chọn mua vỏ bọc uchiwa kèm móc khóa bi hay không
+    let keychainCheckbox = document.getElementById('keychain-checkbox');
+    let includeKeychain = keychainCheckbox ? keychainCheckbox.checked : false;
+    let keychainPrice = includeKeychain ? 8000 : 0; // Giá vỏ bọc là 8.000đ
 
+    const total = subtotal + 3000 + keychainPrice; // Tiền hàng + 3k phí gói + 8k vỏ bọc (nếu có)
     document.getElementById('order-code-display').innerText = `Mã đơn hàng: ${currentOrderCode}`;
     document.getElementById('qr-amount').innerText = total.toLocaleString() + 'đ';
     document.getElementById('qr-syntax').innerText = currentOrderCode;

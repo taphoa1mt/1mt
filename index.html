@@ -193,19 +193,21 @@
                     <div class="text-xs text-rose-500 font-medium bg-rose-50 p-2 rounded-lg text-center mb-2">
     ✨ Giúp shop tổng đơn từ 20.000đ trở lên (chưa tính phí gói) để tiến hành thanh toán nha 💖
 </div>
-                   <div class="border-t border-gray-100 pt-2">
-                        <div class="flex justify-between items-center text-xs text-gray-600 py-1">
-                            <!-- Tùy chọn vỏ bọc uchiwa kèm móc khóa bi (Chỉ hiện khi có Uchiwa) -->
-<!-- Tùy chọn vỏ bọc uchiwa kèm móc khóa bi (Chỉ hiện khi có Uchiwa) -->
-<div id="keychain-option-container" class="hidden bg-pink-50/80 p-2.5 rounded-xl border border-pink-200 my-2 text-xs">
-    <label class="flex items-center space-x-2.5 cursor-pointer">
-        <input type="checkbox" id="keychain-checkbox" onchange="updateCartUI()" class="w-4 h-4 rounded text-pink-500 focus:ring-pink-400 accent-pink-500 flex-shrink-0">
-        <span class="font-medium text-gray-700 leading-snug">✨ Vỏ bọc uchiwa kèm móc khóa bi <span class="text-pink-600 font-semibold">(+8.000đ)</span></span>
-    </label>
+   <div class="border-t border-gray-100 pt-2">
+    <!-- Tùy chọn vỏ bọc uchiwa nằm độc lập ở hàng trên -->
+    <div id="keychain-option-container" class="hidden w-full bg-pink-50/80 p-2.5 rounded-xl border border-pink-200 mb-2 text-xs">
+        <label class="flex items-center space-x-2.5 cursor-pointer">
+            <input type="checkbox" id="keychain-checkbox" onchange="updateCartUI()" class="w-4 h-4 rounded text-pink-500 focus:ring-pink-400 accent-pink-500 flex-shrink-0">
+            <span class="font-medium text-gray-700 leading-snug">✨ Vỏ bọc uchiwa kèm móc khóa bi <span class="text-pink-600 font-semibold">(+8.000đ)</span></span>
+        </label>
+    </div>
+
+    <!-- Dòng Phí gói hàng nằm ở hàng dưới -->
+    <div class="flex justify-between items-center text-xs text-gray-600 py-1">
+        <span>Phí gói hàng (bắt buộc):</span>
+        <span class="font-medium text-gray-800">3.000đ</span>
+    </div>
 </div>
-                            <span>Phí gói hàng (bắt buộc):</span>
-                            <span class="font-medium text-gray-800">3.000đ</span>
-                        </div>
                         <!-- Dòng thêm mới thông tin phí ship Momo Ship -->
                         <div class="flex justify-between items-center text-xs text-gray-500 py-1">
                             <span>Phí vận chuyển (Momo Ship):</span>
@@ -752,6 +754,9 @@ function proceedToPayment() {
         alert("Vui lòng điền đầy đủ thông tin nhận hàng ạ!");
         return;
     }
+    // Đặt việc tạo mã đơn hàng ở đây là chuẩn nhất: 
+    // Chỉ khi khách đã điền đầy đủ thông tin và bấm thanh toán thì mới sinh mã đơn chính thức.
+    currentOrderCode = 'DH' + Math.floor(1000 + Math.random() * 9000);
 
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
@@ -838,18 +843,32 @@ function finishOrder() {
     let custPhone = document.getElementById('cust-phone') ? document.getElementById('cust-phone').value : 'Không có';
     let custAddress = document.getElementById('cust-address') ? document.getElementById('cust-address').value : 'Không có';
 
-    let orderSummary = orderDetails.join('\n');
-    let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toLocaleString();
+   // Kiểm tra xem khách có chọn vỏ bọc uchiwa kèm móc khóa bi không
+    let keychainCheckbox = document.getElementById('keychain-checkbox');
+    let includeKeychain = keychainCheckbox ? keychainCheckbox.checked : false;
 
-    let text = `🎉 CÓ ĐƠN HÀNG MỚI!\n\n`;
-    text += `📦 Mã đơn / Nội dung CK: #${orderCode}\n`;
-    text += `👤 Khách hàng: ${custName}\n`;
-    text += `📞 Số điện thoại: ${custPhone}\n`;
-    text += `🏠 Địa chỉ: ${custAddress}\n`;
-    text += `--------------------------------\n`;
-    text += `${orderSummary}\n`;
-    text += `--------------------------------\n`;
-    text += `💰 Tổng tiền: ${totalPrice}đ`;
+    // Nếu khách có chọn vỏ bọc, cộng thêm vào danh sách đơn hàng
+    if (includeKeychain) {
+        orderDetails.push("✨ Vỏ bọc uchiwa kèm móc khóa bi: 1 cái - 8,000đ");
+    }
+
+    let ordersSummary = orderDetails.join('\n');
+
+    // Tính tổng tiền: Tiền hàng + 3.000đ phí gói (luôn có) + 8.000đ vỏ bọc (nếu có)
+    let rawSubtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let finalTotalPrice = rawSubtotal + 3000 + (includeKeychain ? 8000 : 0);
+    let totalPriceId = finalTotalPrice.toLocaleString() + 'đ';
+
+    let text = `📦 CÓ ĐƠN HÀNG MỚI!\n`;
+    text += `• Mã đơn / Nội dung CK: ${currentOrderCode}\n`;
+    text += `• Khách hàng: ${custName}\n`;
+    text += `• Số điện thoại: ${custPhone}\n`;
+    text += `• Địa chỉ: ${custAddress}\n`;
+    text += `---------------------------------\n`;
+    text += `${ordersSummary}\n`;
+    text += `• Phí gói hàng: 3,000đ\n`; // Luôn luôn hiển thị dòng này ở mọi đơn hàng
+    text += `---------------------------------\n`;
+    text += `✨ Tổng tiền: ${totalPriceId}`;
 
     // Gửi thông báo Telegram
     fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {

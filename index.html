@@ -34,7 +34,7 @@
         <div class="px-4 pt-4 pb-2 flex items-center justify-between border-b border-pink-50">
             <div class="flex items-center space-x-3">
                 <div class="relative">
-                    <img src="https://github.com/taphoa1mt/1mt/raw/8250469163aae59b6d9cfef578c42adef8fac6af/3.png" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-pink-200">
+                    <img src="https://github.com/taphoa1mt/1mt/raw/main/1mt%20avatar.png" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-pink-200">
                     <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-white rounded-full"></span>
                 </div>
                 <div>
@@ -75,7 +75,7 @@
                 <a href="https://www.tiktok.com/@onlyme.corner" class="flex items-center justify-center space-x-2 bg-pink-100/70 hover:bg-pink-100 text-pink-600 py-2.5 px-3 rounded-xl text-xs font-semibold transition">
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg><span>Tiktok</span>
                 </a>
-                <a href="#" class="flex items-center justify-center space-x-2 bg-blue-100/70 hover:bg-blue-100 text-blue-700 py-2.5 px-3 rounded-xl text-xs font-semibold transition">
+                <a href="https://zalo.me/0837138913" class="flex items-center justify-center space-x-2 bg-blue-100/70 hover:bg-blue-100 text-blue-700 py-2.5 px-3 rounded-xl text-xs font-semibold transition">
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.915 1.442 5.518 3.69 7.234V22l3.418-1.876c.866.241 1.782.373 2.892.373 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.085 11.856l-2.45-2.625-4.77 2.625 5.24-5.59 2.45 2.625 4.77-2.625-5.24 5.59z"/></svg><span>Zalo</span>
                 </a>
             </div>
@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <!-- Filter Tier 1: Nhóm nhạc (Tone hồng) -->
+        <!-- Filter Tier 1: Nhóm nhạc -->
         <div class="px-4 mb-2">
             <p class="text-[10px] font-bold text-gray-400 mb-1">CHỌN NHÓM NHẠC:</p>
             <div id="group-filters" class="flex space-x-2 overflow-x-auto pb-1 no-scrollbar">
@@ -106,7 +106,7 @@
             </div>
         </div>
 
-        <!-- Filter Tier 2: Loại sản phẩm (Tone xanh trời) -->
+        <!-- Filter Tier 2: Loại sản phẩm -->
         <div class="px-4 mb-4">
             <p class="text-[10px] font-bold text-gray-400 mb-1">LOẠI SẢN PHẨM:</p>
             <div id="type-filters" class="flex space-x-2 overflow-x-auto pb-1 no-scrollbar">
@@ -116,8 +116,6 @@
                 <button onclick="filterByType('note')" id="type-note" class="type-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-600 hover:bg-sky-100 transition">Note</button>
                 <button onclick="filterByType('uchiwa')" id="type-uchiwa" class="type-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-600 hover:bg-sky-100 transition">Uchiwa</button>
                 <button onclick="filterByType('badge')" id="type-badge" class="type-btn whitespace-nowrap px-3.5 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-600 hover:bg-sky-100 transition">badge</button>
-            </div>
-            </div>
             </div>
         </div>
 
@@ -145,7 +143,7 @@
             </button>
         </div>
 
-        <!-- Product Detail Modal (Xem phóng to ảnh & Nhiều ảnh sản phẩm) -->
+        <!-- Product Detail Modal -->
         <div id="product-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4 max-w-md mx-auto">
             <div class="bg-white rounded-3xl p-5 w-full shadow-2xl relative max-h-[90vh] flex flex-col">
                 <button onclick="closeProductModal()" class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
@@ -155,13 +153,16 @@
                     <img id="modal-main-img" src="" alt="Detail" class="w-full h-full object-cover">
                 </div>
 
-                <!-- Gallery Thumbnails (Nhiều ảnh nhỏ để chuyển đổi) -->
+                <!-- Gallery Thumbnails -->
                 <div id="modal-thumbnails" class="flex space-x-2 overflow-x-auto pb-2 mb-3">
                     <!-- Ảnh nhỏ inject bằng JS -->
                 </div>
 
                 <div class="flex-1 overflow-y-auto pr-1">
-                    <span id="modal-tag" class="inline-block bg-sky-50 text-sky-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase mb-1"></span>
+                    <div class="flex justify-between items-center mb-1">
+                        <span id="modal-tag" class="inline-block bg-sky-50 text-sky-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase"></span>
+                        <span id="modal-stock" class="text-[11px] font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-md"></span>
+                    </div>
                     <h3 id="modal-title" class="font-bold text-gray-800 text-base mb-1"></h3>
                     <p id="modal-desc" class="text-xs text-gray-500 mb-3"></p>
                     <p id="modal-price" class="font-bold text-pink-500 text-lg mb-4"></p>
@@ -193,22 +194,20 @@
                 </div>
 
                 <div class="border-t border-gray-100 pt-2">
-                    <!-- Dòng hiển thị phí gói hàng bắt buộc -->
-    <div class="flex justify-between items-center text-xs text-gray-600 py-1">
-        <span>Phí gói hàng (bắt buộc):</span>
-        <span class="font-medium text-gray-800">3.000đ</span>
-    </div>
+                    <div class="flex justify-between items-center text-xs text-gray-600 py-1">
+                        <span>Phí gói hàng (bắt buộc):</span>
+                        <span class="font-medium text-gray-800">3.000đ</span>
+                    </div>
 
-    <div class="flex justify-between items-center py-2 border-t border-gray-100 font-bold">
-        <span>Tổng cộng:</span>
-        <span id="cart-total" class="text-pink-500 text-base">0đ</span>
-    </div>
-</div>
-
-<button onclick="proceedToPayment()" class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2.5 rounded-xl text-xs font-bold shadow-md transition">
-    Tiến hành Thanh toán QR 💖
-</button>
+                    <div class="flex justify-between items-center py-2 border-t border-gray-100 font-bold">
+                        <span>Tổng cộng:</span>
+                        <span id="cart-total" class="text-pink-500 text-base">0đ</span>
+                    </div>
                 </div>
+
+                <button onclick="proceedToPayment()" class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2.5 rounded-xl text-xs font-bold shadow-md transition">
+                    Tiến hành Thanh toán QR 💖
+                </button>
             </div>
         </div>
 
@@ -225,37 +224,34 @@
                     <img id="qr-image" src="" alt="QR Code" class="w-48 h-48 mx-auto rounded-lg object-contain bg-white">
                 </div>
 
-               <div class="bg-gray-50 p-2.5 rounded-xl text-left text-[11px] text-gray-600 space-y-1.5 mb-4 border border-gray-100">
-    <p><b>🏦 Ngân hàng:</b> VIETCOMBANK</p>
-    <p><b>👤 Chủ tài khoản:</b> NGUYEN THI THANH NHANH</p>
-    
-    <!-- Số tài khoản có nút copy -->
-    <div class="flex items-center justify-between py-0.5">
-        <span><b>💳 Số tài khoản:</b></span>
-        <div class="flex items-center space-x-2">
-            <span id="bank-account" class="font-semibold text-gray-800">0741000647821</span>
-            <button onclick="copyToClipboard('0741000647821')" class="bg-pink-100 hover:bg-pink-200 text-pink-600 text-[10px] px-2 py-0.5 rounded transition flex items-center gap-1 font-medium">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-                Copy
-            </button>
-        </div>
-    </div>
+                <div class="bg-gray-50 p-2.5 rounded-xl text-left text-[11px] text-gray-600 space-y-1.5 mb-4 border border-gray-100">
+                    <p><b>🏦 Ngân hàng:</b> VIETCOMBANK</p>
+                    <p><b>👤 Chủ tài khoản:</b> NGUYEN THI THANH NHANH</p>
+                    
+                    <div class="flex items-center justify-between py-0.5">
+                        <span><b>💳 Số tài khoản:</b></span>
+                        <div class="flex items-center space-x-2">
+                            <span id="bank-account" class="font-semibold text-gray-800">0741000647821</span>
+                            <button onclick="copyToClipboard('0741000647821')" class="bg-pink-100 hover:bg-pink-200 text-pink-600 text-[10px] px-2 py-0.5 rounded transition flex items-center gap-1 font-medium">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
 
-    <p><b>💵 Số tiền:</b> <span id="qr-amount" class="text-pink-500 font-bold"></span></p>
+                    <p><b>💵 Số tiền:</b> <span id="qr-amount" class="text-pink-500 font-bold"></span></p>
 
-    <!-- Nội dung CK có nút copy lấy tự động từ id="qr-syntax" -->
-    <div class="flex items-center justify-between py-0.5">
-        <span><b>📝 Nội dung CK:</b></span>
-        <div class="flex items-center space-x-2">
-            <span id="qr-syntax" class="text-pink-500 font-bold"></span>
-            <button onclick="copyToClipboard(document.getElementById('qr-syntax').innerText)" class="bg-pink-100 hover:bg-pink-200 text-pink-600 text-[10px] px-2 py-0.5 rounded transition flex items-center gap-1 font-medium">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-                Copy
-            </button>
-        </div>
-    </div>
-</div>
-</div>
+                    <div class="flex items-center justify-between py-0.5">
+                        <span><b>📝 Nội dung CK:</b></span>
+                        <div class="flex items-center space-x-2">
+                            <span id="qr-syntax" class="text-pink-500 font-bold"></span>
+                            <button onclick="copyToClipboard(document.getElementById('qr-syntax').innerText)" class="bg-pink-100 hover:bg-pink-200 text-pink-600 text-[10px] px-2 py-0.5 rounded transition flex items-center gap-1 font-medium">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <p class="text-[10px] text-gray-400 mb-4">Vui lòng chuyển khoản đúng nội dung để hệ thống tự động xác nhận đơn ạ!</p>
                 
@@ -269,13 +265,14 @@
 
     <!-- JavaScript -->
     <script>
-        // Danh sách sản phẩm mẫu (Mỗi sản phẩm có thể chứa mảng nhiều ảnh: images)
+        // Danh sách sản phẩm mẫu (Đã bổ sung thêm thuộc tính stock cho mỗi sản phẩm)
         const products = [
             { 
                 id: 1, 
                 name: "Sticker Set Cortis V1", 
                 desc: "Size 4x4, Cán bóng, set 30 tấm", 
                 price: 12000, 
+                stock: 20,
                 group: "cortis", 
                 type: "sticker", 
                 images: [
@@ -289,6 +286,7 @@
                 name: "Card Des Hologram Cortis", 
                 desc: "Chất liệu cứng cáp, ép hologram lấp lánh bắt sáng cực đẹp.", 
                 price: 35000, 
+                stock: 15,
                 group: "cortis", 
                 type: "card", 
                 images: [
@@ -301,6 +299,7 @@
                 name: "Poster Khổ Lớn Cortis", 
                 desc: "Giấy C300 dày dặn, màu in sắc nét không phai.", 
                 price: 60000, 
+                stock: 8,
                 group: "cortis", 
                 type: "poster", 
                 images: [
@@ -313,6 +312,7 @@
                 name: "Sticker aespa Supernova", 
                 desc: "Set độc quyền concept Supernova thời thượng.", 
                 price: 25000, 
+                stock: 30,
                 group: "aespa", 
                 type: "sticker", 
                 images: [
@@ -325,6 +325,7 @@
                 name: "Card Des Karina / Winter", 
                 desc: "Card thiết kế kèm sleeve bảo vệ chắc chắn.", 
                 price: 40000, 
+                stock: 12,
                 group: "aespa", 
                 type: "card", 
                 images: [
@@ -337,6 +338,7 @@
                 name: "Poster aespa Drama Era", 
                 desc: "Kích thước chuẩn A3, giấy ảnh cao cấp.", 
                 price: 55000, 
+                stock: 10,
                 group: "aespa", 
                 type: "poster", 
                 images: [
@@ -349,6 +351,7 @@
                 name: "Sticker IVE Love Dive Set", 
                 desc: "Cắt bế sẵn tinh xảo, bóc dán cực tiện lợi.", 
                 price: 25000, 
+                stock: 25,
                 group: "ive", 
                 type: "sticker", 
                 images: [
@@ -360,6 +363,7 @@
                 name: "Card Des Wonyoung / Yujin", 
                 desc: "Card thiết kế độc quyền nhà shop siêu cưng.", 
                 price: 45000, 
+                stock: 14,
                 group: "ive", 
                 type: "card", 
                 images: [
@@ -371,6 +375,7 @@
                 name: "Poster IVE After Like", 
                 desc: "Màu sắc tươi sáng, sắc nét từng chi tiết nhỏ.", 
                 price: 50000, 
+                stock: 6,
                 group: "ive", 
                 type: "poster", 
                 images: [
@@ -382,6 +387,7 @@
                 name: "Sticker Cortis V2 Extra", 
                 desc: "Bổ sung mẫu mới siêu xinh đợt 2.", 
                 price: 25000, 
+                stock: 18,
                 group: "cortis", 
                 type: "sticker", 
                 images: [
@@ -389,22 +395,22 @@
                 ]
             },
             { 
-                id: 11, name: "Card Des aespa Special", desc: "Phiên bản giới hạn số lượng ít", price: 40000, group: "aespa", type: "card", images: ["https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500"] 
+                id: 11, name: "Card Des aespa Special", desc: "Phiên bản giới hạn số lượng ít", price: 40000, stock: 5, group: "aespa", type: "card", images: ["https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500"] 
             },
             { 
-                id: 12, name: "Poster IVE I've Mine", desc: "Chất liệu giấy ảnh chống nước nhẹ", price: 55000, group: "ive", type: "poster", images: ["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"] 
+                id: 12, name: "Poster IVE I've Mine", desc: "Chất liệu giấy ảnh chống nước nhẹ", price: 55000, stock: 11, group: "ive", type: "poster", images: ["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"] 
             },
             { 
-                id: 13, name: "Sticker aespa Next Level", desc: "Set sticker phản quang cực chất", price: 25000, group: "aespa", type: "sticker", images: ["https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500"] 
+                id: 13, name: "Sticker aespa Next Level", desc: "Set sticker phản quang cực chất", price: 25000, stock: 22, group: "aespa", type: "sticker", images: ["https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500"] 
             },
             { 
-                id: 14, name: "Card Des IVE Baddie", desc: "Bo góc tròn chuẩn size standard", price: 45000, group: "ive", type: "card", images: ["https://images.unsplash.com/photo-1534723452862-2c87fca73d88?w=500"] 
+                id: 14, name: "Card Des IVE Baddie", desc: "Bo góc tròn chuẩn size standard", price: 45000, stock: 9, group: "ive", type: "card", images: ["https://images.unsplash.com/photo-1534723452862-2c87fca73d88?w=500"] 
             },
             { 
-                id: 15, name: "Poster Cortis World Tour", desc: "Poster khổ lớn trang trí phòng", price: 65000, group: "cortis", type: "poster", images: ["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"] 
+                id: 15, name: "Poster Cortis World Tour", desc: "Poster khổ lớn trang trí phòng", price: 65000, stock: 7, group: "cortis", type: "poster", images: ["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"] 
             },
             { 
-                id: 16, name: "Sticker Extra Thêm Trang 2", desc: "Mẫu độc quyền đợt 2", price: 30000, group: "cortis", type: "sticker", images: ["https://images.unsplash.com/photo-1572375833955-4423b3260844?w=500"] 
+                id: 16, name: "Sticker Extra Thêm Trang 2", desc: "Mẫu độc quyền đợt 2", price: 30000, stock: 25, group: "cortis", type: "sticker", images: ["https://images.unsplash.com/photo-1572375833955-4423b3260844?w=500"] 
             }
         ];
 
@@ -461,7 +467,7 @@
             renderPagination(totalPages);
         }
 
-                function renderProducts(items, totalCount) {
+        function renderProducts(items, totalCount) {
             const grid = document.getElementById('product-grid');
             if (totalCount === 0) {
                 grid.innerHTML = `<div class="col-span-2 text-center py-10 text-gray-400 text-xs">Không tìm thấy sản phẩm phù hợp ✨</div>`;
@@ -470,23 +476,24 @@
             grid.innerHTML = items.map(p => `
                 <div class="bg-white border border-pink-50 rounded-2xl p-2.5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
                     <div>
-                        <border border-pink-200 ->
                         <div onclick="openProductModal(${p.id})" class="w-full h-32 rounded-xl overflow-hidden bg-pink-50 mb-2 cursor-pointer relative group border border-pink-200">
                             <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                             ${p.images.length > 1 ? `<span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded-md font-bold">+${p.images.length} ảnh</span>` : ''}
                         </div>
-                        <span class="inline-block bg-sky-50 text-sky-600 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase mb-1">${p.group} • ${p.type}</span>
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="inline-block bg-sky-50 text-sky-600 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">${p.group} • ${p.type}</span>
+                            <span class="text-[9px] font-bold ${p.stock > 0 ? 'text-emerald-500' : 'text-red-500'}">Kho: ${p.stock}</span>
+                        </div>
                         <h4 onclick="openProductModal(${p.id})" class="text-xs font-bold text-gray-800 line-clamp-1 mb-0.5 cursor-pointer hover:text-pink-500">${p.name}</h4>
                         <p class="text-[10px] text-gray-400 line-clamp-1 mb-1.5">${p.desc}</p>
                         <p class="text-xs font-bold text-pink-500 mb-2">${p.price.toLocaleString()}đ</p>
                     </div>
-                    <button onclick="addToCart(${p.id})" class="w-full bg-pink-50 hover:bg-pink-500 hover:text-white text-pink-600 py-1.5 rounded-xl text-[11px] font-bold transition">
-                        + Thêm vào giỏ
+                    <button onclick="addToCart(${p.id})" ${p.stock === 0 ? 'disabled' : ''} class="w-full ${p.stock === 0 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-pink-50 hover:bg-pink-500 hover:text-white text-pink-600'} py-1.5 rounded-xl text-[11px] font-bold transition">
+                        ${p.stock === 0 ? 'Hết hàng' : '+ Thêm vào giỏ'}
                     </button>
                 </div>
             `).join('');
         }
-
 
         function renderPagination(totalPages) {
             const container = document.getElementById('pagination-container');
@@ -509,53 +516,100 @@
         function changePage(page) {
             currentPage = page;
             updateDisplay();
-            window.scrollTo({ top: 250, behavior: 'smooth' });
         }
 
-        // --- XỬ LÝ POPUP XEM CHI TIẾT & PHÓNG TO ẢNH ---
-        function openProductModal(productId) {
-            const p = products.find(item => item.id === productId);
+        // Modal sản phẩm chi tiết
+        let currentModalProduct = null;
+        function openProductModal(id) {
+            const p = products.find(item => item.id === id);
             if (!p) return;
+            currentModalProduct = p;
 
             document.getElementById('modal-main-img').src = p.images[0];
-            document.getElementById('modal-tag').innerText = `${p.group} • ${p.type}`;
+            document.getElementById('modal-tag.innerText = `${p.group} • ${p.type}`;
+            document.getElementById('modal-stock').innerText = `Kho: ${p.stock}`;
+            document.getElementById('modal-stock').className = `text-[11px] font-bold px-2 py-0.5 rounded-md ${p.stock > 0 ? 'text-emerald-600 bg-emerald-50' : 'text-red-600 bg-red-50'}`;
             document.getElementById('modal-title').innerText = p.name;
             document.getElementById('modal-desc').innerText = p.desc;
             document.getElementById('modal-price').innerText = p.price.toLocaleString() + 'đ';
-            document.getElementById('modal-add-btn').onclick = function() {
-                addToCart(p.id);
-                closeProductModal();
-            };
 
-            // Tạo danh sách ảnh nhỏ bên dưới ảnh lớn
             const thumbContainer = document.getElementById('modal-thumbnails');
             if (p.images.length > 1) {
-                thumbContainer.innerHTML = p.images.map((imgUrl, index) => `
-                    <div onclick="switchModalImage('${imgUrl}')" class="w-14 h-14 rounded-lg overflow-hidden border-2 ${index === 0 ? 'border-pink-500' : 'border-gray-200'} cursor-pointer flex-shrink-0 bg-pink-50">
-                        <img src="${imgUrl}" class="w-full h-full object-cover">
+                thumbContainer.innerHTML = p.images.map((img, idx) => `
+                    <div onclick="changeModalImage('${img}')" class="w-14 h-14 rounded-xl overflow-hidden border-2 ${idx === 0 ? 'border-pink-500' : 'border-transparent'} cursor-pointer flex-shrink-0 bg-pink-50">
+                        <img src="${img}" class="w-full h-full object-cover">
                     </div>
                 `).join('');
                 thumbContainer.classList.remove('hidden');
             } else {
+                thumbContainer.innerHTML = '';
                 thumbContainer.classList.add('hidden');
+            }
+
+            const addBtn = document.getElementById('modal-add-btn');
+            if (p.stock === 0) {
+                addBtn.innerText = 'Sản phẩm đã hết hàng';
+                addBtn.disabled = true;
+                addBtn.className = "w-full bg-gray-200 text-gray-400 py-2.5 rounded-xl text-xs font-bold cursor-not-allowed";
+            } else {
+                addBtn.innerText = '+ Thêm vào giỏ hàng';
+                addBtn.disabled = false;
+                addBtn.className = "w-full bg-pink-500 hover:bg-pink-600 text-white py-2.5 rounded-xl text-xs font-bold shadow-md shadow-pink-200 transition";
+                addBtn.onclick = () => {
+                    addToCart(p.id);
+                    closeProductModal();
+                };
             }
 
             document.getElementById('product-modal').classList.remove('hidden');
         }
 
-        function switchModalImage(url) {
-            document.getElementById('modal-main-img').src = url;
+        function changeModalImage(imgSrc) {
+            document.getElementById('modal-main-img').src = imgSrc;
         }
 
         function closeProductModal() {
             document.getElementById('product-modal').classList.add('hidden');
         }
 
+        // Quản lý giỏ hàng & kiểm tra stock
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
-            const existing = cart.find(item => item.id === productId);
-            if (existing) { existing.quantity += 1; } 
-            else { cart.push({ ...product, quantity: 1, image: product.images[0] }); }
+            if (!product || product.stock <= 0) {
+                alert("Sản phẩm này đã tạm hết hàng!");
+                return;
+            }
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                if (existingItem.quantity < product.stock) {
+                    existingItem.quantity++;
+                } else {
+                    alert(`Đã đạt giới hạn tồn kho (Tối đa: ${product.stock})!`);
+                    return;
+                }
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartUI();
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            const product = products.find(p => p.id === productId);
+            if (!item) return;
+
+            const newQty = item.quantity + delta;
+            if (newQty > product.stock) {
+                alert(`Kho chỉ còn lại ${product.stock} sản phẩm này!`);
+                return;
+            }
+
+            if (newQty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            } else {
+                item.quantity = newQty;
+            }
             updateCartUI();
         }
 
@@ -572,50 +626,40 @@
 
             const container = document.getElementById('cart-items-container');
             if (cart.length === 0) {
-                container.innerHTML = `<p class="text-center text-gray-400 text-xs py-4">Giỏ hàng trống trơn à 🥺</p>`;
+                container.innerHTML = `<p class="text-center text-gray-400 text-xs py-4">Giỏ hàng trống trơn à nghen ✨</p>`;
             } else {
                 container.innerHTML = cart.map(item => `
-                    <div class="flex items-center justify-between bg-white p-2 rounded-xl border border-gray-100">
-                        <div class="flex items-center space-x-2">
-                            <img src="${item.image}" class="w-8 h-8 rounded-lg object-cover">
-                            <div>
-                                <h5 class="text-[11px] font-bold text-gray-800 line-clamp-1">${item.name}</h5>
-                                <p class="text-[10px] text-pink-500 font-semibold">${(item.price * item.quantity).toLocaleString()}đ</p>
+                    <div class="flex items-center justify-between bg-white p-2 rounded-xl border border-pink-100 shadow-sm">
+                        <div class="flex items-center space-x-2 overflow-hidden">
+                            <img src="${item.images[0]}" class="w-10 h-10 rounded-lg object-cover flex-shrink-0">
+                            <div class="truncate">
+                                <h5 class="text-xs font-bold text-gray-800 truncate">${item.name}</h5>
+                                <p class="text-[10px] text-pink-500 font-bold">${item.price.toLocaleString()}đ</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-1.5">
-                            <button onclick="changeQty(${item.id}, -1)" class="w-5 h-5 bg-gray-100 rounded font-bold text-[10px]">-</button>
-                            <span class="text-[11px] font-bold">${item.quantity}</span>
-                            <button onclick="changeQty(${item.id}, 1)" class="w-5 h-5 bg-pink-100 text-pink-500 rounded font-bold text-[10px]">+</button>
+                        <div class="flex items-center space-x-2 flex-shrink-0">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 rounded-lg bg-pink-50 text-pink-500 font-bold text-xs flex items-center justify-center hover:bg-pink-100">-</button>
+                            <span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 rounded-lg bg-pink-50 text-pink-500 font-bold text-xs flex items-center justify-center hover:bg-pink-100">+</button>
                         </div>
                     </div>
                 `).join('');
             }
 
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), +3000);
-            document.getElementById('cart-total').innerText = totalPrice.toLocaleString() + 'đ';
-        }
-
-        function changeQty(productId, delta) {
-            const item = cart.find(i => i.id === productId);
-            if (item) {
-                item.quantity += delta;
-                if (item.quantity <= 0) { cart = cart.filter(i => i.id !== productId); }
-            }
-            updateCartUI();
+            const goodsTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const finalTotal = goodsTotal > 0 ? goodsTotal + 3000 : 0;
+            document.getElementById('cart-total').innerText = finalTotal.toLocaleString() + 'đ';
         }
 
         function toggleCartModal() {
-            document.getElementById('cart-modal').classList.toggle('hidden');
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
         }
 
-        function closeQrModal() {
-            document.getElementById('qr-modal').classList.add('hidden');
-        }
-
+        // Thanh toán & tạo QR
         function proceedToPayment() {
             if (cart.length === 0) {
-                alert('Giỏ hàng đang trống!');
+                alert("Giỏ hàng của bạn đang trống!");
                 return;
             }
             const name = document.getElementById('cust-name').value.trim();
@@ -623,42 +667,44 @@
             const address = document.getElementById('cust-address').value.trim();
 
             if (!name || !phone || !address) {
-                alert('Vui lòng điền đầy đủ thông tin nhận hàng ạ!');
+                alert("Vui lòng điền đầy đủ thông tin nhận hàng ạ!");
                 return;
             }
 
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) +3000;
-            const orderId = 'KPOP' + Math.floor(100000 + Math.random() * 900000);
+            const orderCode = 'TH' + Math.floor(100000 + Math.random() * 900000);
+            const goodsTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const finalTotal = goodsTotal + 3000;
 
-            const bankId = 'vcb'; 
-            const accountNo = '1234567890';
-            const template = 'compact2';
-            const qrUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-${template}.png?amount=${totalPrice}&addInfo=${orderId}`;
+            document.getElementById('order-code-display').innerText = `Mã đơn hàng: #${orderCode}`;
+            document.getElementById('qr-amount').innerText = finalTotal.toLocaleString() + 'đ';
+            document.getElementById('qr-syntax').innerText = orderCode;
 
+            const qrUrl = `https://img.vietqr.io/image/VCB-0741000647821-compact2.png?amount=${finalTotal}&addInfo=${orderCode}&accountName=NGUYEN%20THI%20THANH%20NHANH`;
             document.getElementById('qr-image').src = qrUrl;
-            document.getElementById('order-code-display').innerText = `Mã đơn hàng: #${orderId}`;
-            document.getElementById('qr-amount').innerText = totalPrice.toLocaleString() + 'đ';
-            document.getElementById('qr-syntax').innerText = orderId;
 
             toggleCartModal();
             document.getElementById('qr-modal').classList.remove('hidden');
         }
 
+        function closeQrModal() {
+            document.getElementById('qr-modal').classList.add('hidden');
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Đã sao chép: " + text);
+            });
+        }
+
         function finishOrder() {
-            alert('Cảm ơn bạn đã ủng hộ shop! Đơn hàng đã được lưu lại 💕');
+            alert("Cảm ơn bạn đã đặt hàng tại Tạp Hóa 1 Mình Tui! Shop sẽ kiểm tra thanh toán và gửi hàng sớm nhất ạ 💖");
             cart = [];
             updateCartUI();
             closeQrModal();
         }
 
+        // Khởi chạy hiển thị lần đầu
         updateDisplay();
-        function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        alert("Đã sao chép số tài khoản: " + text);
-    }).catch(err => {
-        console.error("Lỗi sao chép: ", err);
-    });
-}
     </script>
 </body>
 </html>

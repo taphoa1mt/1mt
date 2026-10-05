@@ -190,6 +190,9 @@
                 <div id="cart-items-container" class="overflow-y-auto flex-1 space-y-2 mb-3 pr-1 max-h-36"></div>
 
                 <div class="border-t border-gray-100 pt-2">
+                    <div class="text-xs text-rose-500 font-medium bg-rose-50 p-2 rounded-lg text-center mb-2">
+    ✨ Giúp shop tổng đơn từ 20.000đ trở lên (chưa tính phí gói) để tiến hành thanh toán nha 💖
+</div>
                    <div class="border-t border-gray-100 pt-2">
                         <div class="flex justify-between items-center text-xs text-gray-600 py-1">
                             <span>Phí gói hàng (bắt buộc):</span>
@@ -722,8 +725,14 @@ function proceedToPayment() {
     }
 
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const total = subtotal + 3000; // Cộng phí ship (nếu có)
     
+    // Kiểm tra đơn tối thiểu 20.000đ (chưa tính phí gói hàng 3k)
+    if (subtotal < 20000) {
+        alert("Đơn hàng tối thiểu phải từ 20.000đ (chưa tính phí gói hàng) mới được thanh toán bạn nhé! 💖");
+        return;
+    }
+
+    const total = subtotal + 3000; // Cộng phí gói hàng 3k
     // Tạo mã đơn hàng và lưu vào biến toàn cục
     currentOrderCode = "DH" + Math.floor(1000 + Math.random() * 9000);
 

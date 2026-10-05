@@ -153,7 +153,7 @@
             <div class="bg-white rounded-3xl p-5 w-full shadow-2xl relative max-h-[90vh] flex flex-col">
                 <button onclick="closeProductModal()" class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
                 
-                <div class="w-full h-64 rounded-2xl overflow-hidden bg-pink-50 mb-3 border border-pink-100">
+                <div class="w-full aspect-square rounded-2xl overflow-hidden bg-pink-50 mb-3 border border-pink-100">
                     <img id="modal-main-img" src="" alt="Detail" class="w-full h-full object-cover">
                 </div>
 
@@ -254,117 +254,34 @@
 
     <!-- JavaScript -->
     <script>
-        // Cấu trúc sản phẩm đã được tối ưu hóa theo dạng ngắn gọn và dễ chỉnh sửa
         const products = [
             { 
                 id: 1, 
-                name: "Mini Uchiwa ", 
-                desc: "Size 4x4, Cán bóng, set 30 tấm", 
-                price: 12000, 
+                name: "Mini Heart Uchiwa KeonHo ver 1 ", 
+                desc: "Shape tim, Size 10x10, Cán bóng, khung quạt đen", 
+                price: 20000, 
                 group: "cortis", 
                 type: "uchiwa", 
                 members: [
-                    { id: 'member1', name: 'Member 1', stock: 10 },
-                    { id: 'member2', name: 'Member 2', stock: 0 }
+                    { id: 'default', name: 'Mặc định', stock: 10 }
                 ], 
-                images: ["https://images.unsplash.com/photo-1572375833955-4423b3260844?w=500", "https://images.unsplash.com/photo-1534723452862-2c87fca73d88?w=500"] 
+                images: ["https://github.com/taphoa1mt/1mt/raw/main/Uchi%20Keonho.png"] 
             },
             { 
                 id: 2, 
-                name: "Card Des Hologram Cortis", 
-                desc: "Chất liệu cứng cáp, ép hologram.", 
-                price: 35000, 
+                name: "Mini Heart Uchiwa KeonHyeon ver 1", 
+                desc: "Shape tròn, Size 10x10, Cán bóng, khung quạt trong", 
+                price: 18000, 
                 group: "cortis", 
-                type: "card", 
+                type: "uchiwa", 
                 members: [
-                    { id: 'member1', name: 'Member 1', stock: 5 },
-                    { id: 'member2', name: 'Member 2', stock: 3 }
-                ], 
-                images: ["https://images.unsplash.com/photo-1534723452862-2c87fca73d88?w=500"] 
-            },
-            { 
-                id: 3, 
-                name: "Poster Khổ Lớn Cortis", 
-                desc: "Giấy C300 dày dặn, không phai.", 
-                price: 60000, 
-                group: "cortis", 
-                type: "poster", 
-                members: [
-                    { id: 'member1', name: 'Member 1', stock: 2 },
-                    { id: 'member2', name: 'Member 2', stock: 0 }
-                ], 
-                images: ["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500"] 
-            },
-            { 
-                id: 4, 
-                name: "Sticker aespa Supernova", 
-                desc: "Concept Supernova thời thượng.", 
-                price: 25000, 
-                group: "aespa", 
-                type: "sticker", 
-                members: [
-                    { id: 'karina', name: 'Karina', stock: 8 },
-                    { id: 'winter', name: 'Winter', stock: 5 },
-                    { id: 'giselle', name: 'Giselle', stock: 0 },
-                    { id: 'ningning', name: 'Ningning', stock: 12 }
-                ], 
-                images: ["https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500"] 
-            },
-            { 
-                id: 5, 
-                name: "Card Des Karina / Winter", 
-                desc: "Kèm sleeve bảo vệ chắc chắn.", 
-                price: 40000, 
-                group: "aespa", 
-                type: "card", 
-                members: [
-                    { id: 'karina', name: 'Karina', stock: 4 },
-                    { id: 'winter', name: 'Winter', stock: 6 }
-                ], 
-                images: ["https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500"] 
-            },
-            { 
-                id: 6, 
-                name: "Poster aespa Drama Era", 
-                desc: "Kích thước chuẩn A3, giấy ảnh.", 
-                price: 55000, 
-                group: "aespa", 
-                type: "poster", 
-                members: [
-                    { id: 'karina', name: 'Karina', stock: 3 },
-                    { id: 'winter', name: 'Winter', stock: 0 }
-                ], 
-                images: ["https://images.unsplash.com/photo-1544816155-12df9643f363?w=500"] 
-            },
-            { 
-                id: 7, 
-                name: "Sticker IVE Love Dive Set", 
-                desc: "Cắt bế sẵn tinh xảo, bóc dán tiện.", 
-                price: 25000, 
-                group: "ive", 
-                type: "sticker", 
-                members: [
-                    { id: 'wonyoung', name: 'Wonyoung', stock: 10 },
-                    { id: 'yujin', name: 'Yujin', stock: 7 },
-                    { id: 'rei', name: 'Rei', stock: 4 }
-                ], 
-                images: ["https://images.unsplash.com/photo-1572375833955-4423b3260844?w=500"] 
-            },
-            { 
-                id: 8, 
-                name: "Card Des Wonyoung / Yujin", 
-                desc: "Card thiết kế độc quyền siêu cưng.", 
-                price: 45000, 
-                group: "ive", 
-                type: "card", 
-                members: [
-                    { id: 'wonyoung', name: 'Wonyoung', stock: 2 },
-                    { id: 'yujin', name: 'Yujin', stock: 5 }
-                ], 
-                images: ["https://images.unsplash.com/photo-1534723452862-2c87fca73d88?w=500"] 
+                    { id: 'Keonho', name: 'KeonHo', stock: 5 },
+                    { id: 'SeongHyeon', name: 'SeongHyeon', stock: 5 }
+                ],
+                images: ["https://github.com/taphoa1mt/1mt/raw/main/Uchi%2054%20ver%201%20K.png", "https://github.com/taphoa1mt/1mt/raw/main/Uchi%2054%20ver%202%20S.png"] 
             }
         ];
-
+            
         let cart = [];
         let selectedGroup = 'all';
         let selectedType = 'all';
@@ -420,51 +337,56 @@
             renderPagination(totalPages);
         }
 
-        function renderProducts(items, totalCount) {
-            const grid = document.getElementById('product-grid');
-            if (totalCount === 0) {
-                grid.innerHTML = `<div class="col-span-2 text-center py-10 text-gray-400 text-xs">Không tìm thấy sản phẩm phù hợp ✨</div>`;
-                return;
-            }
+       function renderProducts(items, totalCount) {
+    const grid = document.getElementById('product-grid');
+    if (totalCount === 0) {
+        grid.innerHTML = `<div class="col-span-2 text-center py-10 text-gray-400 text-xs">Không tìm thấy sản phẩm phù hợp ✨</div>`;
+        return;
+    }
 
-            grid.innerHTML = items.map(p => {
-                const optionsHtml = p.members.map(m => {
-                    const stockText = m.stock > 0 ? `(Còn ${m.stock})` : `(Hết hàng)`;
-                    return `<option value="${m.id}" ${m.stock <= 0 ? 'disabled' : ''}>${m.name} ${stockText}</option>`;
-                }).join('');
+    grid.innerHTML = items.map(p => {
+        // Chỉ hiện khung chọn khi có từ 2 thành viên trở lên, HOẶC có 1 thành viên nhưng tên/id khác 'default' hoặc 'mac-dinh'
+        const hasMultipleMembers = p.members && p.members.length > 1;
+        const hasSingleValidMember = p.members && p.members.length === 1 && p.members[0].id !== 'default' && p.members[0].id !== 'mac-dinh';
+        const needsMemberSelection = hasMultipleMembers || hasSingleValidMember;
+        
+        const firstMember = p.members[0];
+        const isOutOfStock = firstMember.stock <= 0;
 
-                const firstMember = p.members[0];
-                const isFirstOutOfStock = firstMember.stock <= 0;
+        // Nếu sản phẩm không phân loại thì bỏ trống hoàn toàn, không render khung chọn
+        const memberSelectionHtml = needsMemberSelection ? `
+            <div class="mb-2">
+                <label class="text-[9px] font-bold text-gray-400 block mb-0.5">CHỌN THÀNH VIÊN:</label>
+                <select id="select-member-${p.id}" onchange="onMemberChange(${p.id})" class="w-full px-2 py-1 bg-pink-50/60 border border-pink-100 rounded-lg text-[11px] font-semibold text-gray-700 focus:outline-none focus:ring-1 focus:ring-pink-300">
+                    ${p.members.map(m => `<option value="${m.id}" ${m.stock <= 0 ? 'disabled' : ''}>${m.name}${m.stock > 0 ? `(Còn ${m.stock})` : '(Hết hàng)'}</option>`).join('')}
+                </select>
+            </div>
+        ` : '';
 
-                return `
-                    <div class="bg-white border border-pink-50 rounded-2xl p-2.5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-                        <div>
-                            <div onclick="openProductModal(${p.id})" class="w-full h-32 rounded-xl overflow-hidden bg-pink-50 mb-2 cursor-pointer relative group border border-pink-200">
-                                <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                            </div>
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="inline-block bg-sky-50 text-sky-600 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">${p.type}</span>
-                            </div>
-                            <h4 onclick="openProductModal(${p.id})" class="text-xs font-bold text-gray-800 line-clamp-1 mb-0.5 cursor-pointer hover:text-pink-500">${p.name}</h4>
-                            <p class="text-[10px] text-gray-400 line-clamp-1 mb-1.5">${p.desc}</p>
-                            
-                            <div class="mb-2">
-                                <label class="text-[9px] font-bold text-gray-400 block mb-0.5">CHỌN THÀNH VIÊN:</label>
-                                <select id="select-member-${p.id}" onchange="onMemberChange(${p.id})" class="w-full px-2 py-1 bg-pink-50/60 border border-pink-100 rounded-lg text-[11px] font-semibold text-gray-700 focus:outline-none focus:ring-1 focus:ring-pink-300">
-                                    ${optionsHtml}
-                                </select>
-                            </div>
-
-                            <p class="text-xs font-bold text-pink-500 mb-2">${p.price.toLocaleString()}đ</p>
-                        </div>
-
-                        <button id="btn-add-${p.id}" onclick="addToCart(${p.id})" ${isFirstOutOfStock ? 'disabled' : ''} class="w-full py-1.5 rounded-xl text-[11px] font-bold transition ${isFirstOutOfStock ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-pink-50 hover:bg-pink-500 hover:text-white text-pink-600'}">
-                            ${isFirstOutOfStock ? 'Thành viên hết hàng' : '+ Thêm vào giỏ'}
-                        </button>
+        return `
+            <div class="bg-white border border-pink-50 rounded-2xl p-2.5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div onclick="openProductModal(${p.id})" class="w-full h-32 rounded-xl overflow-hidden bg-pink-50 mb-2 cursor-pointer relative group border border-pink-200">
+                        <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     </div>
-                `;
-            }).join('');
-        }
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="inline-block bg-sky-50 text-sky-600 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">${p.type}</span>
+                    </div>
+                    <h4 onclick="openProductModal(${p.id})" class="text-xs font-bold text-gray-800 line-clamp-1 mb-0.5 cursor-pointer hover:text-pink-500">${p.name}</h4>
+                    <p class="text-[10px] text-gray-400 line-clamp-1 mb-1.5">${p.desc}</p>
+                    
+                    ${memberSelectionHtml}
+
+                    <p class="text-xs font-bold text-pink-500 mb-2">${p.price.toLocaleString()}đ</p>
+                </div>
+
+                <button id="btn-add-${p.id}" onclick="addToCart(${p.id})" ${isOutOfStock ? 'disabled' : ''} class="w-full py-1.5 rounded-xl text-[11px] font-bold transition ${isOutOfStock ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-pink-50 hover:bg-pink-500 hover:text-white text-pink-600'}">
+                    ${isOutOfStock ? 'Hết hàng' : '+ Thêm vào giỏ'}
+                </button>
+            </div>
+        `;
+    }).join('');
+}
 
         function onMemberChange(productId) {
             const p = products.find(item => item.id === productId);
@@ -598,9 +520,8 @@
                     quantity: 1
                 });
             }
-
             updateCartUI();
-            alert(`Đã thêm ${p.name} (${memberObj.name}) vào giỏ hàng! 💖`);
+            alert('Đã thêm vào giỏ hàng thành công! 💖');
         }
 
         function updateCartUI() {
@@ -617,49 +538,52 @@
             }
 
             if (cart.length === 0) {
-                container.innerHTML = `<p class="text-center text-gray-400 text-xs py-4">Giỏ hàng trống trơn à nghen ✨</p>`;
+                container.innerHTML = `<p class="text-center text-gray-400 text-xs py-6">Giỏ hàng của bạn đang trống ✨</p>`;
                 totalEl.innerText = '0đ';
                 return;
             }
 
-            container.innerHTML = cart.map(item => `
-                <div class="flex items-center justify-between bg-white p-2 rounded-xl border border-pink-100 text-xs">
-                    <div class="flex items-center space-x-2">
-                        <img src="${item.image}" class="w-10 h-10 rounded-lg object-cover">
-                        <div>
-                            <p class="font-bold text-gray-800 line-clamp-1">${item.name}</p>
-                            <p class="text-[10px] text-purple-600 font-semibold">Phân loại: ${item.memberName}</p>
-                            <p class="text-pink-500 font-semibold">${item.price.toLocaleString()}đ x ${item.quantity}</p>
+            let subtotal = 0;
+            container.innerHTML = cart.map((item, index) => {
+                subtotal += item.price * item.quantity;
+                return `
+                    <div class="flex items-center justify-between bg-white p-2 rounded-xl border border-pink-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="${item.image}" class="w-10 h-10 rounded-lg object-cover">
+                            <div>
+                                <h5 class="text-[11px] font-bold text-gray-800 line-clamp-1">${item.name}</h5>
+                                <p class="text-[10px] text-pink-500 font-semibold">Phân loại: ${item.memberName}</p>
+                                <p class="text-[10px] text-gray-500">${item.price.toLocaleString()}đ x ${item.quantity}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <button onclick="changeCartQty(${index}, -1)" class="w-5 h-5 bg-pink-50 text-pink-600 rounded-md font-bold text-xs flex items-center justify-center">-</button>
+                            <span class="text-xs font-bold px-1">${item.quantity}</span>
+                            <button onclick="changeCartQty(${index}, 1)" class="w-5 h-5 bg-pink-50 text-pink-600 rounded-md font-bold text-xs flex items-center justify-center">+</button>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-1">
-                        <button onclick="changeQty('${item.id}', '${item.memberId}', -1)" class="w-6 h-6 bg-pink-50 text-pink-600 rounded font-bold">-</button>
-                        <span class="w-5 text-center font-bold">${item.quantity}</span>
-                        <button onclick="changeQty('${item.id}', '${item.memberId}', 1)" class="w-6 h-6 bg-pink-50 text-pink-600 rounded font-bold">+</button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
 
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const finalTotal = subtotal + 3000;
+            const finalTotal = subtotal > 0 ? subtotal + 3000 : 0;
             totalEl.innerText = finalTotal.toLocaleString() + 'đ';
         }
 
-        function changeQty(productId, memberId, delta) {
-            const item = cart.find(i => i.id == productId && i.memberId === memberId);
-            const p = products.find(prod => prod.id == productId);
-            const memberObj = p.members.find(m => m.id === memberId);
-            if (!item || !memberObj) return;
+        function changeCartQty(index, delta) {
+            const item = cart[index];
+            const p = products.find(prod => prod.id === item.id);
+            const memberObj = p.members.find(m => m.id === item.memberId);
 
             const newQty = item.quantity + delta;
             if (newQty > memberObj.stock) {
-                alert('Đã đạt số lượng tối đa trong kho của thành viên này!');
+                alert('Đã đạt số lượng tồn kho tối đa của thành viên này!');
                 return;
             }
 
-            item.quantity = newQty;
-            if (item.quantity <= 0) {
-                cart = cart.filter(i => !(i.id == productId && i.memberId === memberId));
+            if (newQty <= 0) {
+                cart.splice(index, 1);
+            } else {
+                item.quantity = newQty;
             }
             updateCartUI();
         }
@@ -669,6 +593,7 @@
                 alert('Giỏ hàng của bạn đang trống!');
                 return;
             }
+
             const name = document.getElementById('cust-name').value.trim();
             const phone = document.getElementById('cust-phone').value.trim();
             const address = document.getElementById('cust-address').value.trim();
@@ -679,17 +604,18 @@
             }
 
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const finalTotal = subtotal + 3000;
+            const total = subtotal + 3000;
             const orderCode = 'TH' + Math.floor(1000 + Math.random() * 9000);
 
-            document.getElementById('order-code-display').innerText = `Mã đơn: #${orderCode}`;
-            document.getElementById('qr-amount').innerText = finalTotal.toLocaleString() + 'đ';
+            document.getElementById('order-code-display').innerText = `Mã đơn hàng: ${orderCode}`;
+            document.getElementById('qr-amount').innerText = total.toLocaleString() + 'đ';
             document.getElementById('qr-syntax').innerText = orderCode;
-            
-            const qrUrl = `https://img.vietqr.io/image/VCB-0741000647821-compact2.png?amount=${finalTotal}&addInfo=${orderCode}&accountName=NGUYEN%20THI%20THANH%20NHANH`;
+
+            // VietQR API link
+            const qrUrl = `https://img.vietqr.io/image/vcb-0741000647821-compact2.png?amount=${total}&addInfo=${orderCode}&accountName=NGUYEN%20THI%20THANH%20NHANH`;
             document.getElementById('qr-image').src = qrUrl;
 
-            document.getElementById('cart-modal').classList.add('hidden');
+            toggleCartModal();
             document.getElementById('qr-modal').classList.remove('hidden');
         }
 
@@ -698,31 +624,21 @@
         }
 
         function finishOrder() {
-            cart.forEach(cartItem => {
-                const prod = products.find(p => p.id === cartItem.id);
-                if (prod) {
-                    const mem = prod.members.find(m => m.id === cartItem.memberId);
-                    if (mem) {
-                        mem.stock -= cartItem.quantity;
-                        if (mem.stock < 0) mem.stock = 0;
-                    }
-                }
-            });
-
-            alert('Cảm ơn bạn đã đặt hàng tại Tạp Hóa 1 Mình Tui! Shop đã trừ kho và sẽ xác nhận đơn sớm nhé ạ 💖');
+            alert('Cảm ơn bạn đã đặt hàng! Shop sẽ xác nhận đơn sớm nhất ạ 💖');
             cart = [];
             updateCartUI();
             closeQrModal();
-            updateDisplay();
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert('Đã sao chép: ' + text);
+                alert('Đã sao chép thành công! ✨');
             });
         }
 
+        // Khởi chạy khi load trang
         updateDisplay();
+        updateCartUI();
     </script>
 </body>
 </html>

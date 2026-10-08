@@ -35,6 +35,29 @@
       { "id": "default", "name": "Mặc định", "stock": 10 }
     ],
     "images": ["https://github.com/taphoa1mt/1mt/raw/main/uch%20SH%20sunflower.PNG"] 
-  }
- 
+  },
+    { 
+    "id": 4, 
+    "name": "Mini Heart Uchiwa Keonho ver 2", 
+    "desc": "Shape tim, Size 10x10, Cán bóng, khung quạt trong", 
+    "price": 20000, 
+    "group": "cortis", 
+    "type": "uchiwa", 
+    "members": [
+      { "id": "default", "name": "Mặc định", "stock": 10 }
+    ],
+    "images": ["https://github.com/taphoa1mt/1mt/raw/main/Uchi%20Keonho%20ver%202.png"] 
+    },
+  { 
+    "id": 5, 
+    "name": "Mini Heart Uchiwa Juhoon ver 1", 
+    "desc": "Shape tim, Size 10x10, Cán bóng, khung quạt trong", 
+    "price": 20000, 
+    "group": "cortis", 
+    "type": "uchiwa", 
+    "members": [
+      { "id": "default", "name": "Mặc định", "stock": 10 }
+    ],
+    "images": ["https://github.com/taphoa1mt/1mt/raw/main/Uchi%20Juhoon%20ver%201.png"] 
+    }
 ]

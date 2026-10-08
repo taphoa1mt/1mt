@@ -59,5 +59,18 @@
       { "id": "default", "name": "Mặc định", "stock": 10 }
     ],
     "images": ["https://github.com/taphoa1mt/1mt/raw/main/Uchi%20Juhoon%20ver%201.png"] 
+    },
+  
+    { 
+    "id": 6, 
+    "name": "Mini Heart Uchiwa SeongHyeon ver 2", 
+    "desc": "Shape tim, Size 10x10, Cán bóng, khung quạt trong", 
+    "price": 20000, 
+    "group": "cortis", 
+    "type": "uchiwa", 
+    "members": [
+      { "id": "default", "name": "Mặc định", "stock": 10 }
+    ],
+    "images": ["https://github.com/taphoa1mt/1mt/raw/main/Uchi%20SH%20baby%201.png"] 
     }
 ]
